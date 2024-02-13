@@ -1,49 +1,63 @@
+// VideoStack.js
+// Description: Manages navigation for video-related screens within the app. This stack navigator allows users
+// to navigate between the main video listing screen and individual video details. It ensures a cohesive
+// navigation experience focused on video content.
+
+//UPDATES:
+//I've moved the styling into a StyleSheet at the bottom of the file, which makes the code cleaner and separates concerns (styling vs. logic). 
+//I added comments to describe the purpose of the file and the functionality of each part, enhancing code readability and maintainability.
+
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import VideosScreen from '../screens/VideosScreen';
-import VideoDetails from './VideoDetails';
+import VideosScreen from '../screens/VideosScreen'; // Screen listing videos
+import VideoDetails from './VideoDetails'; // Screen for displaying video details
+import { StyleSheet } from 'react-native';
 
-const Tab = createStackNavigator();
+const Stack = createStackNavigator();
 
 const VideoStack = () => {
-
   return (
-    <Tab.Navigator
-        barStyle={{elevation: 0, shadowOpacity: 0}}
-        >
-        <Tab.Screen 
-            name="VideoScreen" 
-            component={VideosScreen}
-            options={{
-                title: "",
-                tabBarShowLabel: false,
-                headerStyle: {
-                    height: 0
-                }
-            }}
-          />
-        <Tab.Screen 
-            name="VideoDetails" 
-            component={VideoDetails}
-            options={{
-                headerStyle: {
-                    height: 100,
-                    backgroundColor: '#6ACDEA',
-                    borderBottomWidth: 0,
-                    shadowOpacity: 0,
-                    elevation: 0
-                },
-                headerTintColor: 'white',
-                headerTitleStyle: {
-                    fontWeight: 'bold',
-                    fontSize: 19,
-                    marginTop: 20
-                }
-            }}
-          />
-     </Tab.Navigator>
+    <Stack.Navigator screenOptions={styles.screenOptions}>
+      <Stack.Screen 
+        name="VideoScreen" 
+        component={VideosScreen}
+        options={{
+          title: "",
+          headerShown: false, // Opting to hide the header for the video listing for a fullscreen experience
+        }}
+      />
+      <Stack.Screen 
+        name="VideoDetails" 
+        component={VideoDetails}
+        options={{
+          headerStyle: styles.headerStyle,
+          headerTintColor: 'white',
+          headerTitleStyle: styles.headerTitleStyle,
+        }}
+      />
+    </Stack.Navigator>
   );
 };
 
+const styles = StyleSheet.create({
+  screenOptions: {
+    headerStyle: {
+      elevation: 0,
+      shadowOpacity: 0,
+      borderBottomWidth: 0,
+    }
+  },
+  headerStyle: {
+    height: 100,
+    backgroundColor: '#6ACDEA',
+    shadowOpacity: 0,
+    elevation: 0,
+  },
+  headerTitleStyle: {
+    fontWeight: 'bold',
+    fontSize: 19,
+    marginTop: 20,
+  },
+});
 
 export default VideoStack;
