@@ -1,31 +1,14 @@
-import React, {useState} from 'react';
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Dimensions,
-  TouchableOpacity,
-  TextInput,
-  SafeAreaView
-} from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, SafeAreaView, View, TouchableOpacity, Text, Dimensions } from 'react-native';
+import InputField from '../components/InputField';
 
-const width_window = Dimensions.get('window').width;
-const height_window = Dimensions.get('window').height;
+const { height: height_window } = Dimensions.get('window');
 
 const SubscribeScreen = () => {
-
-    const [firstName, setFirstName] = useState("")
-    const [lastName, setLastName] = useState("")
-    const [email, setEmail] = useState("")
-    // const [phone, setPhone] = useState("")
-    // const [address1, setAddress1] = useState("")
-    // const [address2, setAddress2] = useState("")
-    // const [city, setCity] = useState("")
-    // const [state, setState] = useState("")
-    // const [zipcode, setZipCode] = useState("")
-    const [error, setError] = useState("")
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+    const [error, setError] = useState("");
 
     const key = "c33830cf35915a643bf517427543fcad9bb74c7b";
     const secret = "a973a7a2dca0a5da98192a42026c541fe0332248";
@@ -68,56 +51,33 @@ const SubscribeScreen = () => {
         }
       }
     
-    return (
+      return (
         <SafeAreaView style={styles.form}>
             <View style={styles.container}>
-                <View style={styles.itemContainer}>
-                    <Text style={styles.tag}>First Name</Text>
-                    <TextInput 
-                        onChangeText={text => setFirstName(text)}
-                        style={styles.input}
-                        value={firstName}/>
-                </View>
-                <View style={styles.itemContainer}>
-                    <Text style={styles.tag}>Last Name</Text>
-                    <TextInput 
-                        onChangeText={text => setLastName(text)}
-                        style={styles.input}
-                        value={lastName}/>
-                </View>
-                <View style={styles.itemContainer}>
-                    <Text style={styles.tag}>Email</Text>
-                    <TextInput 
-                        onChangeText={text => setEmail(text)}
-                        style={styles.input}
-                        value={email}/>
-                </View>
+                <InputField label="First Name" value={firstName} onChangeText={setFirstName} />
+                <InputField label="Last Name" value={lastName} onChangeText={setLastName} />
+                <InputField label="Email" value={email} onChangeText={setEmail} />
             </View>
             <View style={styles.buttonContainer}>
-                <TouchableOpacity
-                    onPress={() => submitInfo()}
-                    style={styles.button}>
-                    <Text style={{color: '#6ACDEA', fontSize: 20, fontWeight: 'bold'}}>Subscribe</Text>
+                <TouchableOpacity onPress={submitInfo} style={styles.button}>
+                    <Text style={styles.buttonText}>Subscribe</Text>
                 </TouchableOpacity>
-                <Text style={styles.error} >{error}</Text>
-            </View> 
+                {error ? <Text style={styles.error}>{error}</Text> : null}
+            </View>
         </SafeAreaView>
-        
     );
 };
-
-export default SubscribeScreen;
 
 const styles = StyleSheet.create({
     form: {
         flex: 1,
-        height: height_window, 
+        height: height_window,
         backgroundColor: '#6ACDEA'
     },
     container: {
         flex: 2,
-        alignItems: 'center', 
-        justifyContent: 'center',  
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     buttonContainer: {
         flex: 1,
@@ -125,7 +85,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     button: {
-        flex: 2,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: 'white',
@@ -133,57 +92,16 @@ const styles = StyleSheet.create({
         width: '50%',
         margin: 30,
     },
-    error: {
-        color: "red", 
-        fontSize: 20 
-    },
-    itemContainer: {
-        flex: 1,
-        width: "80%",
-        margin: 15
-    },
-    input: {
-        flex: 1,
-        borderWidth: 2,
-        borderRadius: 20,
-        borderColor: 'white',
-        marginTop: 10
-    },
-    tag: {
-        flex: 1,
-        color: 'white',
+    buttonText: {
+        color: '#6ACDEA',
         fontSize: 20,
         fontWeight: 'bold'
     },
-    
-})
+    error: {
+        color: "red",
+        fontSize: 20
+    },
+    // Styles for itemContainer, input, and tag moved to InputField component
+});
 
-
-{/* <FormItem 
-    name="First Name"
-    onChangeText={(event) => setFirstName(event)}/>
-<FormItem 
-    name="Last Name"
-    onChangeText={(event) => setLastName(event)}/>
-<FormItem 
-    name="Email"
-    placeholder="someone@example.com"
-    onChangeText={(event) => setEmail(event)}/>
-<FormItem 
-    name="Phone"
-    onChangeText={(event) => setPhone(event)}/>
-<FormItem 
-    name="Address1"
-    onChangeText={(event) => setAddress1(event)}/>
-<FormItem 
-    name="Address2"
-    onChangeText={(event) => setAddress2(event)}/>
-<FormItem 
-    name="City"
-    onChangeText={(event) => setCity(event)}/>
-<FormItem 
-    name="State"
-    onChangeText={(event) => setState(event)}/>
-<FormItem 
-    name="Zip/Postal Code"
-    onChangeText={(event) => setZipCode(event)}/> */}
+export default SubscribeScreen;
