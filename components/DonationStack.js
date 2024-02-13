@@ -35,10 +35,9 @@ const DonationStack = () => {
         name="Subscribe"
         component={SubscribeScreen}
         options={{
-          title: "Subscribe to Newsletter!", // Set title for Subscribe screen
+          title: "", // set it to 
           headerStyle: styles.subscribeHeaderStyle, // Apply specific style for Subscribe screen header
           headerTintColor: 'white', // Set header text color
-          headerTitleStyle: styles.subscribeHeaderTitleStyle, // Apply style for header title
         }}
       />
     </Stack.Navigator>
@@ -58,11 +57,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#6ACDEA', // Custom background color
     shadowOpacity: 0,
     elevation: 0,
-  },
-  subscribeHeaderTitleStyle: {
-    fontWeight: 'bold',
-    fontSize: 19,
-    marginTop: 20, // Adjust title position
   },
 });
 
