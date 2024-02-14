@@ -9,6 +9,7 @@ import HomeScreen from '../screens/HomeScreen';
 import DonationStack from './DonationStack';
 import VideoStack from './VideoStack';
 import Icon from 'react-native-vector-icons/Entypo'; // Using Entypo icons for tab icons
+import VideosScreen from '../screens/VideosScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -18,7 +19,7 @@ const BottomTabs = () => {
       {/* Videos Tab */}
       <Tab.Screen
         name="Videos"
-        component={VideoStack}
+        component={VideosScreen}
         options={{
           tabBarIcon: ({ color }) => (
             <Icon name="video" color={color} size={26} /> // Custom icon for Videos tab
