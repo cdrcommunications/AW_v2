@@ -7,7 +7,6 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
 import DonationStack from './DonationStack';
-import VideoStack from './VideoStack';
 import Icon from 'react-native-vector-icons/Entypo'; // Using Entypo icons for tab icons
 import VideosScreen from '../screens/VideosScreen';
 
