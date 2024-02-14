@@ -10,7 +10,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import VideosScreen from '../screens/VideosScreen'; // Screen listing videos
-import VideoDetails from './VideoDetails'; // Screen for displaying video details
+import VideoDetails from '../components/VideoDetails'; // Screen for displaying video details
 import { StyleSheet } from 'react-native';
 
 const Stack = createStackNavigator();

@@ -6,7 +6,7 @@
 import 'react-native-gesture-handler'; // Required for gesture handling in the app
 import { NavigationContainer } from '@react-navigation/native'; // Navigation context provider
 import React, { useEffect } from 'react'; // React imports, useEffect for lifecycle management
-import BottomTabs from './components/BottomTabs'; // Import bottom tabs navigation setup
+import BottomTabs from './navigation/BottomTabs'; // Import bottom tabs navigation setup
 import { Audio } from "expo-av"; // Import Expo AV for audio management
 
 
